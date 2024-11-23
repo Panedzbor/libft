@@ -50,5 +50,6 @@ int		ft_toupper(int ch);
 char	*ft_substr(char const *s, unsigned int start, size_t len)__attribute__((nonnull));
 char	*ft_strjoin(char const *s1, char const *s2)__attribute__((nonnull(1, 2)));
 char	*ft_strtrim(char const *s1, char const *set)__attribute__((nonnull(1, 2)));
+char	**ft_split(const char *s, char c);
 
 #endif
