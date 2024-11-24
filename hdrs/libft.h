@@ -6,7 +6,7 @@
 /*   By: earutiun <earutiun@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:04:47 by earutiun          #+#    #+#             */
-/*   Updated: 2024/11/23 19:03:33 by earutiun         ###   ########.fr       */
+/*   Updated: 2024/11/24 20:04:53 by earutiun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ int		ft_toupper(int ch);
 char	*ft_substr(char const *s, unsigned int start, size_t len)__attribute__((nonnull));
 char	*ft_strjoin(char const *s1, char const *s2)__attribute__((nonnull(1, 2)));
 char	*ft_strtrim(char const *s1, char const *set)__attribute__((nonnull(1, 2)));
-char	**ft_split(const char *s, char c);
+char	**ft_split(const char *s, char c)__attribute__((nonnull(1)));
 
 #endif
