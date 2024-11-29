@@ -21,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (start > ft_strlen(s))
 		return (NULL);
-	sub = (char *)malloc((len + 1) * sizeof(char));
+	sub = (char *)ft_calloc(len + 1, sizeof(char));
 	if (sub == NULL)
 		return (NULL);
 	ft_strncpy(sub, &s[start], len);

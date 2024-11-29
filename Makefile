@@ -15,16 +15,14 @@ NAME=libft.a
 
 # complier and flags
 CC=cc
-CFLAGS=-Wall -Wextra -Werror -I$(H_FOLD)
+CFLAGS=-Wall -Wextra -Werror -I.
 
 # folders
-SRC_FOLD=srcs
 OBJ_FOLD=objs
-H_FOLD=hdrs
 
 # files
-SOURCES=$(wildcard $(SRC_FOLD)/ft*.c)
-OBJECTS=$(SOURCES:$(SRC_FOLD)/%.c=$(OBJ_FOLD)/%.o)
+SOURCES=$(wildcard ft*.c)
+OBJECTS=$(SOURCES:%.c=%.o)
 
 # rules
 all: $(NAME)
@@ -32,15 +30,11 @@ all: $(NAME)
 $(NAME): $(OBJECTS)
 	ar rcs $@ $(OBJECTS)
 
-$(OBJ_FOLD):
-	mkdir -p $(OBJ_FOLD)
-
-$(OBJ_FOLD)/%.o: $(SRC_FOLD)/%.c | $(OBJ_FOLD)
+%.o: %.c libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJECTS)
-	rmdir $(OBJ_FOLD)
 
 fclean: clean
 	rm -f $(NAME)

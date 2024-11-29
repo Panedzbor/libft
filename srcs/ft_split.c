@@ -16,59 +16,64 @@
 //        skip delimiters next to each other
 //    delimiters + 1 = amount of words
 //    create space for array of pointers to text: 
-//			(char **)malloc(amount of words * sizeof(char *))
 //    create space for array of ints: 
-//			(int *)malloc(amount of words * sizeof(int))
 //    assign each word length to respective position in array
 //    for each pointer to text create space (len = int array + 1)
 //    free array of ints
 //    copy words to respective memory slots
 #include "libft.h"
 
-size_t	count_delims(char *s, char c, bool *stop);
+size_t	count_delims(char *s, char c, char *set);
 void	assign_ints(const char *s, char c, size_t *iarr);
 char	**words_alloc(char **array, size_t *iarr, size_t words);
 void	words_copy(const char *s, char c, char **array);
 
-__attribute__((nonnull(1)))
-char	**ft_split(const char *s, char c)
+typedef struct variable_storage
 {
 	size_t		delims;
 	size_t		words;
 	char		**array;
 	size_t		*iarr;
-	bool		stop;
+	char		set[2];
+}t_vs;
 
-	delims = count_delims((char *)s, c, &stop);
-	if (stop == true)
+__attribute__((nonnull(1)))
+char	**ft_split(const char *s, char c)
+{
+	t_vs	vs;
+
+	vs.set[0] = c;
+	vs.set[1] = '\0';
+	vs.delims = count_delims((char *)s, c, vs.set);
+	vs.words = vs.delims + 1;
+	vs.array = (char **)ft_calloc(vs.words + 1, sizeof(char *));
+	if (vs.array == NULL)
 		return (NULL);
-	words = delims + 1;
-	array = (char **)malloc((words + 1) * sizeof(char *));
-	if (array == NULL)
+	vs.array[vs.words] = NULL;
+	vs.iarr = (size_t *)ft_calloc(vs.words, sizeof(size_t));
+	if (vs.iarr == NULL)
+	{
+		free (vs.array);
 		return (NULL);
-	array[words] = NULL;
-	iarr = (size_t *)malloc(words * sizeof(size_t));
-	if (iarr == NULL)
+	}
+	assign_ints(s, c, vs.iarr);
+	if (words_alloc(vs.array, vs.iarr, vs.words) == NULL)
 		return (NULL);
-	assign_ints(s, c, iarr);
-	if (words_alloc(array, iarr, words) == NULL)
-		return (NULL);
-	words_copy(s, c, array);
-	free(iarr);
-	return (array);
+	words_copy(s, c, vs.array);
+	free(vs.iarr);
+	return (vs.array);
 }
 
-size_t	count_delims(char *s, char c, bool *stop)
+size_t	count_delims(char *s, char c, char *set)
 {
 	size_t	i;
 	size_t	n;
 	char	*trimmed;
 
-	*stop = false;
-	trimmed = ft_strtrim(s, (const char *)&c);
+	trimmed = ft_strtrim((const char *)s, (const char *)set);
 	if (ft_strlen(trimmed) == 0)
 	{
-		*stop = true;
+		free (trimmed);
 		return (0);
 	}
 	i = 0;
@@ -117,7 +122,7 @@ char	**words_alloc(char **array, size_t *iarr, size_t words)
 	i = 0;
 	while (i < words)
 	{
-		array[i] = (char *)malloc((iarr[i] + 1) * sizeof(char));
+		array[i] = (char *)ft_calloc(iarr[i] + 1, sizeof(char));
 		if (array[i] == NULL)
 		{
 			while (i > 0)
@@ -127,6 +132,7 @@ char	**words_alloc(char **array, size_t *iarr, size_t words)
 			}
 			free(array[0]);
 			free(array);
+			free(iarr);
 			return (NULL);
 		}
 		i++;
