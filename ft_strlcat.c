@@ -29,7 +29,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 		return (src_size);
 	if (size <= dest_size)
 		return (size + src_size);
-	while (src[j] != '\0' && i < size -1)
+	while (src[j] != '\0' && i < size - 1)
 	{
 		dest[i] = src[j];
 		i++;
@@ -64,3 +64,19 @@ int main()
         printf("Return value: %u\n", result);
 	return 0;
 }*/
+
+/* #include <stdio.h>
+#include <string.h>
+
+int main() {
+    char dest[50] = "rrrrrrrrrrrrrrr";
+    char src[] = "";
+    size_t size = 31;
+
+    size_t result = ft_strlcat(dest, src, size);
+    printf("Result: %zu\n", result);            // Expected: 31
+    printf("Concatenated String: %s\n", dest);  // Expected: "rrrrrrrrrrrrrrr"
+
+    return 0;
+} */
+

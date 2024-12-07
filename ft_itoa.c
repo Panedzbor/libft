@@ -6,7 +6,7 @@
 /*   By: earutiun <earutiun@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 18:45:52 by earutiun          #+#    #+#             */
-/*   Updated: 2024/11/26 14:23:12 by earutiun         ###   ########.fr       */
+/*   Updated: 2024/12/06 19:55:31 by earutiun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ char	*ft_itoa(int n)
 
 	digits = 0;
 	if (n < 0)
-		{
-			nb = (-1) * n;
-			digits++;
-		}
+	{
+		nb = (-1) * n;
+		digits++;
+	}
 	else
 		nb = n;
 	digits += count_digits(nb);
@@ -40,7 +40,7 @@ char	*ft_itoa(int n)
 	return (ptr);
 }
 
-static int		count_digits(unsigned int nb)
+static int	count_digits(unsigned int nb)
 {
 	int	counter;
 

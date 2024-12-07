@@ -6,17 +6,17 @@
 /*   By: earutiun <earutiun@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 17:18:26 by earutiun          #+#    #+#             */
-/*   Updated: 2024/11/17 17:01:46 by earutiun         ###   ########.fr       */
+/*   Updated: 2024/12/06 20:04:23 by earutiun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <stdio.h> */
 #include "libft.h"
 
 __attribute__((nonnull(1)))
 char	*ft_strchr(const char *s, int c)
 {
 	int	i;
+
 	i = 0;
 	while (s[i] != '\0')
 	{

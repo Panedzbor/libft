@@ -12,8 +12,8 @@
 
 #include "libft.h"
 
-size_t	define_start(char *str, const char *set, size_t set_size);
-size_t	define_end(char *str, const char *set, size_t set_size);
+static size_t	define_start(char *str, const char *set, size_t set_size);
+static size_t	define_end(char *str, const char *set, size_t set_size);
 
 __attribute__((nonnull(1, 2)))
 char	*ft_strtrim(const char *s1, const char *set)

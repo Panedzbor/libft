@@ -109,9 +109,11 @@ int main()
 		printf("WarMachine test 7 that fails.:\nExpected result:\n31\nrrrrrrrrrrrrrrr\nft_strlcat & strlcat results:\n%zu | %zu\n", 
 		ft_strlcat(dest, "lorem ipsum dolor sit amet", 5), strlcat(dest, "lorem ipsum dolor sit amet", 5));
 		/* write(1, "\n", 1); */
+		write(1, "\"", 1);
 		write(1, dest, 15);
-		write(1, " | ", 3);
+		write(1, "\" | \"", 5);
 		write(1, dest2, 15);
+		write(1, "\"", 1);
 	}
 	/*{ //-segfaults
 		char src[] = "ThisIsAVeryLargeStringThatExceedsBufferSize"; //char dest[11] = {'H','e','l','l','o'}; char dest2[11] = {'H','e','l','l','o'};
@@ -120,6 +122,12 @@ int main()
 		printf("%s\n\n", src);
 	}*/
 
+	{
+		char dest[50] = "rrrrrrrrrrrrrrr"; char dest2[50] = "rrrrrrrrrrrrrrr"; char src[] = ""; size_t size = 31;
+		size_t result = ft_strlcat(dest, src, size); size_t result2 = strlcat(dest2, src, size);
+		printf("\nResult: %zu | %zu\n", result, result2);            // Expected: 31
+		printf("Concatenated String1: \"%s\" | Concatenated String2: \"%s\"\n", dest, dest2);  // Expected: "rrrrrrrrrrrrrrr"
+	}
 
 	return 0;
 }
