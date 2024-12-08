@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: earutiun <earutiun@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/05 13:32:16 by earutiun          #+#    #+#             */
-/*   Updated: 2024/11/20 18:58:24 by earutiun         ###   ########.fr       */
+/*   Created: 2024/12/07 15:53:26 by earutiun          #+#    #+#             */
+/*   Updated: 2024/12/07 15:53:35 by earutiun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	define_size(const char *src);
-
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+t_list  *ft_lstnew(void *content)
 {
-	size_t	i;
+    t_list *new;
 
-	i = 0;
-	if (size > 0)
-	{
-		while (i < size - 1 && src[i] != '\0')
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = '\0';
-	}
-	return (define_size(src));
-}
-
-static size_t	define_size(const char *src)
-{
-	size_t	size;
-
-	size = 0;
-	while (src[size] != '\0')
-		size++;
-	return (size);
+    new = (t_list *)ft_calloc(1, sizeof(t_list));
+    if (new == NULL)
+        return (NULL);
+    new->content = content;
+    new->next = NULL;
+    return (new);
 }

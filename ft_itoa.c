@@ -30,7 +30,7 @@ char	*ft_itoa(int n)
 	else
 		nb = n;
 	digits += count_digits(nb);
-	ptr = ft_calloc(digits + 1, sizeof(char));
+	ptr = (char *)ft_calloc(digits + 1, sizeof(char));
 	if (ptr == NULL)
 		return (NULL);
 	if (n < 0)
