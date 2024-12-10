@@ -6,7 +6,7 @@
 /*   By: earutiun <earutiun@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:04:47 by earutiun          #+#    #+#             */
-/*   Updated: 2024/11/27 18:26:58 by earutiun         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:11:55 by earutiun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,29 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include <stdbool.h>
+# include <string.h>
+# include <unistd.h>
+# include <bsd/string.h>
 
 typedef struct s_list
 {
-	void *content;
-	struct s_list *next;
-} t_list;
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
-int		ft_atoi(const char *str)__attribute__((nonnull));
-void	ft_bzero(void *s, size_t n)__attribute__((nonnull(1)));
+typedef struct s_variable_storage
+{
+	size_t		words;
+	char		**array;
+	size_t		*iarr;
+	char		set[2];
+	bool		no_words;
+}	t_vs;
+
+int		ft_atoi(const char *str)
+		__attribute__((nonnull));
+void	ft_bzero(void *s, size_t n)
+		__attribute__((nonnull(1)));
 void	*ft_calloc(size_t elements, size_t size);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -52,25 +66,29 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len);
 char	*ft_strrchr(const char *s, int c)__attribute__((nonnull(1)));
 int		ft_tolower(int ch);
 int		ft_toupper(int ch);
-char	*ft_substr(char const *s, unsigned int start, size_t len)__attribute__((nonnull));
-char	*ft_strjoin(char const *s1, char const *s2)__attribute__((nonnull(1, 2)));
-char	*ft_strtrim(char const *s1, char const *set)__attribute__((nonnull(1, 2)));
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+		__attribute__((nonnull));
+char	*ft_strjoin(char const *s1, char const *s2)
+		__attribute__((nonnull(1, 2)));
+char	*ft_strtrim(char const *s1, char const *set)
+		__attribute__((nonnull(1, 2)));
 char	**ft_split(const char *s, char c)__attribute__((nonnull(1)));
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))__attribute__((nonnull));
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+		__attribute__((nonnull));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 t_list	*ft_lstnew(void *content);
-void    ft_lstadd_front(t_list **lst, t_list *new);
-int     ft_lstsize(t_list *lst);
-t_list  *ft_lstlast(t_list *lst);
-void    ft_lstadd_back(t_list **lst, t_list *new);
-void    ft_lstdelone(t_list *lst, void (*del)(void *));
-void    ft_lstclear(t_list **lst, void (*del)(void *));
-void    ft_lstiter(t_list *lst, void (*f)(void *));
-t_list  *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 #endif

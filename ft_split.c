@@ -6,7 +6,7 @@
 /*   By: earutiun <earutiun@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 20:00:01 by earutiun          #+#    #+#             */
-/*   Updated: 2024/12/06 20:02:59 by earutiun         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:48:41 by earutiun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,6 @@ static size_t	count_words(char *s, char c, bool *no_words);
 static void		assign_ints(const char *s, char c, size_t *iarr);
 static char		**words_alloc(char **array, size_t *iarr, size_t words);
 static void		words_copy(const char *s, char c, char **array);
-
-typedef struct variable_storage
-{
-	size_t		words;
-	char		**array;
-	size_t		*iarr;
-	char		set[2];
-	bool		no_words;
-}t_vs;
 
 __attribute__((nonnull(1)))
 char	**ft_split(const char *s, char c)

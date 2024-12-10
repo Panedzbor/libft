@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: earutiun <earutiun@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 19:10:34 by earutiun          #+#    #+#             */
-/*   Updated: 2024/12/09 21:28:15 by earutiun         ###   ########.fr       */
+/*   Created: 2024/12/09 17:42:14 by earutiun          #+#    #+#             */
+/*   Updated: 2024/12/09 21:41:40 by earutiun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (lst && new)
+	t_list	*start;
+	t_list	*node;
+	t_list	*content;
+
+	start = NULL;
+	while (lst && f && del)
 	{
-		new->next = *lst;
-		*lst = new;
+		content = f(lst->content);
+		node = ft_lstnew(content);
+		if (node == NULL)
+		{
+			del(content);
+			ft_lstclear(&start, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&start, node);
+		lst = lst->next;
 	}
+	if (start == NULL)
+		return (NULL);
+	return (start);
 }

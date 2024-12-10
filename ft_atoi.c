@@ -6,7 +6,7 @@
 /*   By: earutiun <earutiun@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:48:40 by earutiun          #+#    #+#             */
-/*   Updated: 2024/11/20 18:30:12 by earutiun         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:44:37 by earutiun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	check_input(const char *str, int *start, int *end, int *negative)
 	int	i;
 
 	i = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' 
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
 		|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f')
 		i++;
 	if (str[i] == '-')
