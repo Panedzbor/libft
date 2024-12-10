@@ -16,6 +16,7 @@ NAME = libft.a
 # complier and flags
 CC = cc
 CFLAGS = -g -Wall -Wextra -Werror -I.
+TFLAGS = -g -Wall -Wextra -I.
 
 # files
 SOURCES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
@@ -52,6 +53,6 @@ bonus: $(OBJECTS) $(OBJ_BON)
 	ar rcs $(NAME) $(OBJECTS) $(OBJ_BON)
 
 test:
-	$(CC) $(CFLAGS) test_libft.c -L. -lft
+	$(CC) $(TFLAGS) ../test_codes/main.c -L. -lft
 	./a.out
 

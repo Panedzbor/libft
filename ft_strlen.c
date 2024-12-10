@@ -23,13 +23,3 @@ size_t	ft_strlen(const char *str)
 		chars++;
 	return (chars);
 }
-/*int main(void)
-{
-	//char *str = "Text";
-	printf("Text: %zu | %zu\n", ft_strlen("Text"), strlen("Text"));
-	printf(": %zu | %zu\n", ft_strlen(""), strlen(""));
-	printf("\\0: %zu | %zu\n", ft_strlen("\0"), strlen("\0"));
-	//printf("null: %zu | %zu\n", ft_strlen(NULL), strlen(NULL));
-
-	return 0;
-}*/
