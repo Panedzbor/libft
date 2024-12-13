@@ -13,8 +13,6 @@ int main()
 
     // Additional test cases
     printf("Search \"romo\" in \"\" with size 10: \"%s\" | \"%s\"\n", ft_strnstr("", "romo", 10), strnstr("", "romo", 10)); // Empty haystack
-    //printf("Search \"romo\" in \"\" with size 10: \"%s\"\n", ft_strnstr("", "romo", 10));
-    //printf("Search \"romo\" in \"\" with size 10: \"%s\"\n", strnstr("", "romo", 10));
     printf("Search \"\" in \"Voroboromoroko\" with size 20: \"%s\" | \"%s\"\n", ft_strnstr("Voroboromoroko", "", 20), strnstr("Voroboromoroko", "", 20)); // Empty needle
     printf("Search \"\" in \"\" with size 0: \"%s\" | \"%s\"\n", ft_strnstr("", "", 0), strnstr("", "", 0)); // Both empty
     printf("Search \"x\" in \"Voroboromoroko\" with size 20: \"%s\" | \"%s\"\n", ft_strnstr("Voroboromoroko", "x", 20), strnstr("Voroboromoroko", "x", 20)); // Needle not in haystack

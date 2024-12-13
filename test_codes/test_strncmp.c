@@ -29,8 +29,8 @@ int main()
 	ft_strncmp("a", "a", -1), strncmp("a", "a", -1));
 	printf(" - a (1): %d | %d\n", 
 	ft_strncmp("", "a", 1), strncmp("", "a", 1));	
-	/* printf("null null (1): %d | %d\n", 
-	ft_strncmp(NULL, NULL, 1), strncmp(NULL, NULL, 1));	 */
+	printf("null null (1): %d | %d\n", 
+	ft_strncmp(NULL, NULL, 1), strncmp(NULL, NULL, 1));	
     printf("test\\200 - test\\0 (6): %d | %d\n", 
 	ft_strncmp("test\200", "test\0", 6), strncmp("test\200", "test\0", 6));
         return 0;

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h> // For the standard memset
 #include <stdbool.h>
-#include "ft_memset.c" // Include your implementation
+#include "../libft/ft_memset.c" // Include your implementation
 
 void printArray(int arr[], float arr1[], int n, int d)
 {
@@ -87,7 +87,20 @@ int main()
     }
     
     {
-        printf("Test 6:");
+        printf("\n\nTest 6:");
+        char str1[50];
+        char str2[50];
+        printf("\nBefore memset(): \"%s\"\n", str1);
+
+        // Fill 8 characters starting from str[13] with '.'
+        ft_memset(str1, 127, 8*sizeof(char));
+        memset(str2, 127, 8*sizeof(char));
+
+        printf("After memset():  \"%s\" | \"%s\"\n\n", str1, str2);
+    }
+
+    {
+        printf("Test 7:");
         
 
         int n = 10;
@@ -108,7 +121,7 @@ int main()
     }
 
     {
-        printf("\n\nTest 7:");
+        printf("\n\nTest 8:");
         
 
         int n = 10;
@@ -129,7 +142,7 @@ int main()
     }
 
     {
-        printf("\n\nTest 8:");
+        printf("\n\nTest 9:");
         
 
         int n = 5;
@@ -149,8 +162,8 @@ int main()
         printArray(NULL, arr2, n, 2);
     }
 
-    /*{
-        printf("\n\nTest 9:");
+    {
+        printf("\n\nTest 10:");
         
 
         int n = 0;
@@ -168,33 +181,21 @@ int main()
         printArray(arr, NULL, n, 1);
         printf("\n");
         printArray(arr2, NULL, n, 1);
-    }*/
+    }
 
-    {
-        printf("\n\nTest 10:");
+
+    /* { //should sgfault
+        printf("\n\nTest 11:");
         char str1[50];
         char str2[50];
         printf("\nBefore memset(): \"%s\"\n", str1);
 
         // Fill 8 characters starting from str[13] with '.'
-        ft_memset(str1, 127, 8*sizeof(char));
-        memset(str2, 127, 8*sizeof(char));
-
-        printf("After memset():  \"%s\" | \"%s\"\n\n", str1, str2);
-    }
-
-    /*{ //should give null error
-        printf("\n\nTest 11:");
-        //char str1[50];
-        //char str2[50];
-        //printf("\nBefore memset(): \"%s\"\n", str1);
-
-        // Fill 8 characters starting from str[13] with '.'
         ft_memset(NULL, 127, 8*sizeof(char));
         memset(NULL, 127, 8*sizeof(char));
 
-        //printf("After memset():  \"%s\" | \"%s\"\n\n", str1, str2);
-    }*/
+        printf("After memset():  \"%s\" | \"%s\"\n\n", str1, str2);
+    } */
     
     return 0;
 }

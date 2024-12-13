@@ -16,13 +16,16 @@ __attribute__((nonnull(1, 2)))
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
+	unsigned char *p1 = (unsigned char*)s1;
+	unsigned char *p2 = (unsigned char*)s2;
 
+	if (!p1 && !p2)
+		return 0;
 	i = 0;
-	while (i < n && ((unsigned char)s1[i] != '\0'
-			|| (unsigned char)s2[i] != '\0'))
+	while (i < n && (p1[i] != '\0' || p2[i] != '\0'))
 	{
-		if ((unsigned char)s1[i] != (unsigned char)s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		if (p1[i] != p2[i])
+			return (p1[i] - p2[i]);
 		i++;
 	}
 	return (0);

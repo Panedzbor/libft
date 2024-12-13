@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "ft_memcpy.c"
+#include "../libft/ft_memcpy.c"
 
 #include <stdio.h>
 #include <string.h>

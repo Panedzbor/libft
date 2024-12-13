@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include <bsd/string.h>
-#include "ft_strlcpy.c"
-#include "bsd_strlcpy.c"
+#include "../libft/ft_strlcpy.c"
+
 int main()
 {
     {
@@ -31,18 +31,16 @@ int main()
 
     {
         printf("Test: char src[] = \"Hello World!\"; char dest[6], 10\n");
-        char src[] = "Hello World!"; char dest[6]; char dest2[6]; char dest3[6];
+        char src[] = "Hello World!"; char dest[6]; char dest2[6];
         printf("Return value: %zu | %zu Result: \"%s\" | \"%s\"\n", 
         ft_strlcpy(dest, src, 10), strlcpy(dest2, src, 10), dest, dest2);
-	    printf("%zu \"%s\"\n\n", bsd_strlcpy(dest3, src, 10), dest3);
     }
 
     {
         printf("Test: char src[] = \"Hello World!\"; char dest[6], 8\n");
-        char src[] = "Hello World!"; char dest[6]; char dest2[6]; char dest3[6];
+        char src[] = "Hello World!"; char dest[6]; char dest2[6];
         printf("Return value: %zu | %zu Result: \"%s\" | \"%s\"\n", 
         ft_strlcpy(dest, src, 8), strlcpy(dest2, src, 8), dest, dest2);
-	    printf("%zu \"%s\"\n\n", bsd_strlcpy(dest3, src, 8), dest3);
     }
 
     {
@@ -75,26 +73,23 @@ int main()
 
     {
         printf("Test: char src[] = \"Hello World!\"; char dest[1], (st)-1\n");
-        char src[] = "Hello World!"; char dest[1]; char dest2[1]; char dest3[1];
+        char src[] = "Hello World!"; char dest[1]; char dest2[1];
         printf("Return value: %zu | %zu Result: \"%s\" | \"%s\"\n", 
         ft_strlcpy(dest, src, (size_t)-1), strlcpy(dest2, src, (size_t)-1), dest, dest2);
-        printf("%zu \"%s\"\n\n", bsd_strlcpy(dest3, src, (size_t)-1), dest3);
     }
 
     {
         printf("Test: char src[] = \"Hello World!\"; char dest[1], (st)-2\n");
-        char src[] = "Hello World!"; char dest[1]; char dest2[1]; char dest3[1];
+        char src[] = "Hello World!"; char dest[1]; char dest2[1];
         printf("Return value: %zu | %zu Result: \"%s\" | \"%s\"\n", 
         ft_strlcpy(dest, src, (size_t)-2), strlcpy(dest2, src, (size_t)-2), dest, dest2);
-        printf("%zu \"%s\"\n\n", bsd_strlcpy(dest3, src, (size_t)-2), dest3);
     }
    
     {
         printf("Test: char src[] = \"Hello World!\"; char dest[1], -2\n");
-        char src[] = "Hello World!"; char dest[1]; char dest2[1]; char dest3[1];
+        char src[] = "Hello World!"; char dest[1]; char dest2[1];
         printf("Return value: %zu | %zu Result: \"%s\" | \"%s\"\n", 
         ft_strlcpy(dest, src, -2), strlcpy(dest2, src, -2), dest, dest2);
-        printf("%zu \"%s\"\n\n", bsd_strlcpy(dest3, src, -2), dest3);
     }
 
     // Edge case: src is empty string, dest buffer size is 6, n is 6

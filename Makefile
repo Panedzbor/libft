@@ -53,6 +53,6 @@ bonus: $(OBJECTS) $(OBJ_BON)
 	ar rcs $(NAME) $(OBJECTS) $(OBJ_BON)
 
 test:
-	$(CC) $(TFLAGS) ../test_codes/main.c -L. -lft
+	$(CC) $(TFLAGS) ../test_codes/main.c -L. -lft -lbsd
 	./a.out
 

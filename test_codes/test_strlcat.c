@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 #include <bsd/string.h>
-#include "ft_strlcat.c"
+#include "../libft/ft_strlcat.c"
 #include <string.h>
 #include <unistd.h>
 

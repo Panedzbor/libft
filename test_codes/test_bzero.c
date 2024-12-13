@@ -1,7 +1,8 @@
 #include <stdio.h>
-#include <string.h> // For the standard bzero
+#include <string.h> // For the standard memset
 #include <stdbool.h>
-#include "ft_bzero.c" // Include your implementation
+#include "../libft/ft_bzero.c"
+#include "../libft/ft_memset.c"
 
 void printArray(int arr[], float arr1[], int n, int d)
 {
