@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <stdio.h> */
 #include "libft.h"
-/* #include "ft_memset.c" */
 
 __attribute__((nonnull(1)))
 void	ft_bzero(void *s, size_t n)

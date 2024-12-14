@@ -6,7 +6,7 @@
 /*   By: earutiun <earutiun@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 20:09:05 by earutiun          #+#    #+#             */
-/*   Updated: 2024/12/09 21:38:47 by earutiun         ###   ########.fr       */
+/*   Updated: 2024/12/14 18:11:05 by earutiun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,32 +50,3 @@ static int	size_count(const char *str)
 	}
 	return (i);
 }
-/*#include "ft_strlcat (1).c"
-int main()
-{
-	char dest[5] = "Hello";
-	char src[10] = "World";
-	unsigned int result = ft_strlcat(dest, src, 3);
-	printf("String: %s\n", dest);
-	printf("Return value: %u\n\n", result);
-	char dest2[5] = "Hello";
-	result = ft_strlcat2(dest2, src, 3);
-	printf("String: %s\n", dest2);
-        printf("Return value: %u\n", result);
-	return 0;
-}*/
-
-/* #include <stdio.h>
-#include <string.h>
-
-int main() {
-    char dest[50] = "rrrrrrrrrrrrrrr";
-    char src[] = "";
-    size_t size = 31;
-
-    size_t result = ft_strlcat(dest, src, size);
-    printf("Result: %zu\n", result);            // Expected: 31
-    printf("Concatenated String: %s\n", dest);  // Expected: "rrrrrrrrrrrrrrr"
-
-    return 0;
-} */

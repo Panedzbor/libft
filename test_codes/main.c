@@ -1,15 +1,15 @@
 #include "../libft/libft.h"
-/* # include <stdio.h>
+# include <stdio.h>
 # include <ctype.h>
 # include <stddef.h>
 # include <stdlib.h>
-# include <stdint.h>
 # include <stdbool.h>
 # include <string.h>
 # include <unistd.h>
-# include <signal.h>(*i)++;
+# include <signal.h>
 # include <setjmp.h>
-# include <bsd/string.h> */
+# include <bsd/string.h>
+# include <stdint.h>
 
 #include "../libft/ft_isprint.c"
 #include "../libft/ft_toupper.c"
@@ -34,19 +34,24 @@
 #include "../libft/ft_isalnum.c"
 #include "../libft/ft_isascii.c"
 #include "../libft/ft_bzero.c"
-#include "../libft/ft_lstnew.c"
-#include "../libft/ft_lstadd_front.c"
-#include "../libft/ft_lstsize.c"
-#include "../libft/ft_lstlast.c"
-#include "../libft/ft_lstadd_back.c"
-#include "../libft/ft_lstdelone.c"
-#include "../libft/ft_lstclear.c"
-#include "../libft/ft_lstiter.c"
-#include "../libft/ft_lstmap.c"
+#include "../libft/ft_lstnew_bonus.c"
+#include "../libft/ft_lstadd_front_bonus.c"
+#include "../libft/ft_lstsize_bonus.c"
+#include "../libft/ft_lstlast_bonus.c"
+#include "../libft/ft_lstadd_back_bonus.c"
+#include "../libft/ft_lstdelone_bonus.c"
+#include "../libft/ft_lstclear_bonus.c"
+#include "../libft/ft_lstiter_bonus.c"
+#include "../libft/ft_lstmap_bonus.c"
 
 #define RESET       "\033[0m"  // Reset to default color
 #define RED         "\033[31m"
 #define GREEN       "\033[32m"
+#define BOLD        "\033[1m"
+#define GOLD        "\033[93m"
+#define ORANGE      "\033[38;2;255;165;0m"   
+#define BLUE        "\033[34m"  
+#define SNOW        "\033[38;2;255;250;250m" 
 
 struct tests
 {
@@ -115,7 +120,7 @@ void fb(void *ptr)
 
 void *fret(void *ptr)
 {
-    int *p = (int*)malloc(sizeof(int));
+    int *p = (int*)calloc(1, sizeof(int));
     if (p == NULL)
         return NULL;
     *p = *(int *)ptr;
@@ -230,11 +235,17 @@ int main() {
     
     if (grandpass == true)
     {
-        printf("\n\nCongratulations! You've passed the test!!!\n");
+        printf(BOLD GOLD "\n\nCongratulations! You've passed the test!!!" RESET "\n");
+        printf(RED "********************" SNOW "/" RED "***" SNOW "\\" RED "*****************" RESET "\n");
+        printf(RED "*************" SNOW "/" RED "*" SNOW "\\" RED "***" SNOW "/" RED "*" SNOW "/" RED "*" SNOW "\\" RED "*" SNOW "\\" RED "****************" RESET "\n");
+        printf(BLUE "************" SNOW "/" BLUE "***" SNOW "\\" BLUE "*" SNOW "/" BLUE "*" SNOW "/" BLUE "***" SNOW "\\" BLUE "*" SNOW "\\" BLUE "***************" RESET "\n");
+        printf(BLUE "***********" SNOW "/" BLUE "*" SNOW "/" BLUE "*" SNOW "\\" BLUE "*" SNOW "/" BLUE "*" SNOW "/" BLUE "*****" SNOW "\\" BLUE "*" SNOW "\\" BLUE "**************" RESET "\n");
+        printf(ORANGE "**********" SNOW "/" ORANGE "*" SNOW "/" ORANGE "***" SNOW "/" ORANGE "*" SNOW "/" ORANGE "*******" SNOW "\\" ORANGE "*" SNOW "\\" ORANGE "*************" RESET "\n");
+        printf(ORANGE "*********" SNOW "/" ORANGE "*" SNOW "/" ORANGE "***************" SNOW "\\" ORANGE "*" SNOW "\\" ORANGE "************" RESET "\n");
     }
     else
     {
-        printf("\n\nTest failed :( There are still functions to work on...\n");
+        printf(BOLD "\n\nTest failed :( There are still functions to work on..." RESET "\n");
         printf("\nFunctions with errors:\n");
         for (i = 0; i < 43; i++)
         {
@@ -242,6 +253,12 @@ int main() {
                 printf("%s\n", t[i].function);
         }
         printf("\nDon't give up ;)\n");
+        printf(RED "******************************************" RESET "\n");
+        printf(RED "*************" SNOW "P" RED "*" SNOW "A" RED "*" SNOW "R" RED "*" SNOW "A" RED "*" SNOW "D" RED "*" SNOW "I" RED "*" SNOW "S" RED "*" SNOW "E" RED "**************" RESET "\n");
+        printf(BLUE "******************************************" RESET "\n");
+        printf(BLUE "******************" SNOW "I" BLUE "*" SNOW "S" BLUE "*********************" RESET "\n");
+        printf(ORANGE "******************************************" RESET "\n");
+        printf(ORANGE "**************" SNOW "A" ORANGE "*" SNOW "R" ORANGE "*" SNOW "M" ORANGE "*" SNOW "E" ORANGE "*" SNOW "N" ORANGE "*" SNOW "I" ORANGE "*" SNOW "A" ORANGE "***************" RESET "\n");
     }
     return 0;
 }
@@ -273,7 +290,7 @@ int compare_results(const char* func_name, void *std_result, void *custom_result
                 if (strcmp((const char *)std_result, (const char *)custom_result) == 0)
                 {
                     printf("Test %d: %50s %15s || %-15s - ", test, func_name, (char *)std_result, (char *)custom_result);
-                    printf(GREEN "PASS\n");
+                    printf(GREEN "PASS");
                     printf(RESET "\n");
                 }
                 else
@@ -288,7 +305,7 @@ int compare_results(const char* func_name, void *std_result, void *custom_result
             else if (!(std_result && custom_result))
             {
                 printf("Test %d: %50s %15s || %-15s - ", test, func_name, (char *)std_result, (char *)custom_result);
-                printf(GREEN "PASS\n");
+                printf(GREEN "PASS");
                 printf(RESET "\n");
             }
             else{
@@ -311,7 +328,7 @@ int compare_results(const char* func_name, void *std_result, void *custom_result
                     write(1, " || ", 4);
                     write(1, custom_result, n);
                     printf(" - ");
-                    printf(GREEN "PASS\n");
+                    printf(GREEN "PASS");
                     printf(RESET "\n");
                 }
                 else
@@ -326,7 +343,7 @@ int compare_results(const char* func_name, void *std_result, void *custom_result
             else if (!(std_result && custom_result))
             {
                 printf("Test %d: %50s %15s || %-15s - ", test, func_name, (char *)std_result, (char *)custom_result);
-                printf(GREEN "PASS\n");
+                printf(GREEN "PASS");
                 printf(RESET "\n");
             }
             else{
@@ -342,7 +359,7 @@ int compare_results(const char* func_name, void *std_result, void *custom_result
             if(std_result == custom_result)
             {
                 printf("Test %d: %50s %15p || %-15p - ", test, func_name, std_result, custom_result);
-                printf(GREEN "PASS\n");
+                printf(GREEN "PASS");
                 printf(RESET "\n");
             }
             else
@@ -360,7 +377,7 @@ int compare_results(const char* func_name, void *std_result, void *custom_result
         if ((*(int *)std_result > 0 && *(int *)custom_result > 0) || (*(int *)std_result == 0 && *(int *)custom_result == 0) || (*(int *)std_result < 0 && *(int *)custom_result < 0)) {
         {
             printf("Test %d: %50s %15d || %-15d - ", test, func_name, *(int *)std_result, *(int *)custom_result);
-            printf(GREEN "PASS\n");
+            printf(GREEN "PASS");
             printf(RESET "\n");
         }
         } else {
@@ -374,9 +391,9 @@ int compare_results(const char* func_name, void *std_result, void *custom_result
     else if (mode == 3)
     {
         if (datatype == 1)
-            printf("%14s %15d || %-15d - Not tested\n", func_name, *(int *)std_result, *(int *)custom_result);
+            printf("%14s %15d || %-15d - Not tested: Undefined behavior\n", func_name, *(int *)std_result, *(int *)custom_result);
         else if (datatype == 2)
-            printf("%14s %15s || %-15s - Not tested\n", func_name, (char *)std_result, (char *)custom_result);
+            printf("%14s %15s || %-15s - Not tested: Undefined behavior\n", func_name, (char *)std_result, (char *)custom_result);
     }
     return 1;
 }
@@ -386,7 +403,7 @@ void run_test_is(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass2 = true;
     int test = 0;
     int resulta, resultb;
-    printf("Running test_is...\n");
+    printf(BOLD GOLD "Running test_is..."RESET"\n");
 
     // isalpha function comparison
     printf("isalpha vs ft_isalpha:\n");
@@ -611,7 +628,7 @@ void run_test_strlen(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
     int resulta, resultb;
-    printf("\nRunning test_strlen...\n");
+    printf(BOLD GOLD "\nRunning test_strlen..." RESET "\n");
 
     // strlen function comparison
     printf("strlen vs ft_strlen:\n");
@@ -682,7 +699,7 @@ void run_test_strchr(bool *grandpass, struct tests (*t)[43], int *i) {
     int test = 0;
     char c = 'a';
     char *resulta, *resultb;
-    printf("\nRunning test_strchr...\n");
+    printf(BOLD GOLD "\nRunning test_strchr..." RESET "\n");
 
     // strchr function comparison
     printf("strchr vs ft_strchr:\n");
@@ -810,7 +827,7 @@ void run_test_strrchr(bool *grandpass, struct tests (*t)[43], int *i) {
     int test = 0;
     char c = 'a';
     char *resulta, *resultb;
-    printf("\nRunning test_strrchr...\n");
+    printf(BOLD GOLD "\nRunning test_strrchr..." RESET "\n");
 
     // strrchr function comparison
     printf("strrchr vs ft_strrchr:\n");
@@ -937,7 +954,7 @@ void run_test_strncmp(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
     int resulta, resultb;
-    printf("\nRunning test_strncmp...\n");
+    printf(BOLD GOLD "\nRunning test_strncmp..." RESET "\n");
 
     // strncmp function comparison
     printf("strncmp vs ft_strncmp:\n");
@@ -1057,7 +1074,7 @@ void run_test_strncmp(bool *grandpass, struct tests (*t)[43], int *i) {
         pass = false;
         printf("Test %d: %50s - Segmentation Fault expected - FAIL\n", ++test, "strncmp('a', NULL, 1)");
     } else {
-        printf("Test %d: %50s - Segmentation Fault - PASS\n", ++test, "strncmp('a', NULL, 1)");
+        printf("Test %d: %50s - Segmentation Fault - PASS", ++test, "strncmp('a', NULL, 1)");
     }
 
     if (setjmp(buf) == 0) {
@@ -1067,7 +1084,7 @@ void run_test_strncmp(bool *grandpass, struct tests (*t)[43], int *i) {
         pass = false;
         printf("Test %d: %50s - Segmentation Fault expected - FAIL\n", ++test, "strncmp(NULL, 'a', 1)");
     } else {
-        printf("Test %d: %50s - Segmentation Fault - PASS\n", ++test, "strncmp(NULL, 'a', 1)");
+        printf("Test %d: %50s - Segmentation Fault - PASS", ++test, "strncmp(NULL, 'a', 1)");
     } */
 
     /* if (setjmp(buf) == 0) {
@@ -1077,7 +1094,7 @@ void run_test_strncmp(bool *grandpass, struct tests (*t)[43], int *i) {
         pass = false;
         printf("Test %d: %50s - Segmentation Fault expected - FAIL\n", ++test, "strncmp(NULL, 'a', 3)");
     } else {
-        printf("Test %d: %50s - Segmentation Fault - PASS\n", ++test, "strncmp(NULL, 'a', 3)");
+        printf("Test %d: %50s - Segmentation Fault - PASS", ++test, "strncmp(NULL, 'a', 3)");
     } */
 
     if (setjmp(buf) == 0) {
@@ -1107,7 +1124,7 @@ void run_test_strnstr(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
     char *resulta, *resultb;
-    printf("\nRunning test_strnstr...\n");
+    printf(BOLD GOLD "\nRunning test_strnstr..." RESET "\n");
 
     // strnstr function comparison
     printf("strnstr vs ft_strnstr:\n");
@@ -1313,7 +1330,7 @@ void run_test_strlcpy(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
     size_t resulta, resultb;
-    printf("\nRunning test_strlcpy...\n");
+    printf(BOLD GOLD "\nRunning test_strlcpy..." RESET "\n");
 
     // Test cases for strlcpy function comparison
     printf("strlcpy vs ft_strlcpy:\n");
@@ -1548,7 +1565,7 @@ void run_test_strlcat(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
     size_t resulta, resultb;
-    printf("\nRunning test_strlcat...\n");
+    printf(BOLD GOLD "\nRunning test_strlcat..." RESET "\n");
 
     // Test cases for strlcat function comparison
     printf("strlcat vs ft_strlcat:\n");
@@ -1885,7 +1902,7 @@ void run_test_strlcat(bool *grandpass, struct tests (*t)[43], int *i) {
         if (setjmp(buf) == 0) {
             resulta = strlcat(dest2, src, 15);
             resultb = ft_strlcat(dest, src, 15);
-            compare_results("strlcat('World', 15)", &resulta, &resultb, 1, ++test, &pass, 1, 0);
+            compare_results("strlcat('World', 15)", &resulta, &resultb, 3, ++test, &pass, 1, 0);
             compare_results("strlcat('World', 15)", dest2, dest, 3, ++test, &pass, 2, 0);
         } else {
             printf("Test %d: %50s - Segmentation Fault\n", ++test, "strlcat('World', 15)");
@@ -1963,7 +1980,7 @@ void run_test_strlcat(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_memset(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_memset...\n");
+    printf(BOLD GOLD "\nRunning test_memset..." RESET "\n");
 
     // Test cases for memset function comparison
     printf("memset vs ft_memset:\n");
@@ -2137,7 +2154,7 @@ void run_test_memset(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_bzero(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_bzero...\n");
+    printf(BOLD GOLD "\nRunning test_bzero..." RESET "\n");
 
     // Test cases for bzero function comparison
     printf("bzero vs ft_bzero:\n");
@@ -2325,7 +2342,7 @@ void run_test_bzero(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_memcpy(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_memcpy...\n");
+    printf(BOLD GOLD "\nRunning test_memcpy..." RESET "\n");
 
     // Test cases for memcpy function comparison
     printf("memcpy vs ft_memcpy:\n");
@@ -2494,7 +2511,7 @@ void run_test_memcpy(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_memmove(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_memmove...\n");
+    printf(BOLD GOLD "\nRunning test_memmove..." RESET "\n");
 
     // Test cases for memmove function comparison
     printf("memmove vs ft_memmove:\n");
@@ -2651,7 +2668,7 @@ void run_test_memchr(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
     char c = 'a';
-    printf("\nRunning test_memchr...\n");
+    printf(BOLD GOLD "\nRunning test_memchr..." RESET "\n");
 
     // Test cases for memchr function comparison
     printf("memchr vs ft_memchr:\n");
@@ -2808,7 +2825,7 @@ void run_test_memchr(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_memcmp(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_memcmp...\n");
+    printf(BOLD GOLD "\nRunning test_memcmp..." RESET "\n");
 
     // Test cases for memcmp function comparison
     printf("memcmp vs ft_memcmp:\n");
@@ -2953,7 +2970,7 @@ void run_test_memcmp(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_atoi(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_atoi...\n");
+    printf(BOLD GOLD "\nRunning test_atoi..." RESET "\n");
 
     // Test cases for atoi function comparison
     printf("atoi vs ft_atoi:\n");
@@ -3255,7 +3272,7 @@ void run_test_atoi(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_strdup(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_strdup...\n");
+    printf(BOLD GOLD "\nRunning test_strdup..." RESET "\n");
 
     // Test cases for strdup function comparison
     printf("strdup vs ft_strdup:\n");
@@ -3414,7 +3431,7 @@ void run_test_strdup(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_calloc(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_calloc...\n");
+    printf(BOLD GOLD "\nRunning test_calloc..." RESET "\n");
 
     // Test cases for calloc function comparison
     printf("calloc vs ft_calloc:\n");
@@ -3668,7 +3685,7 @@ void run_test_calloc(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_substr(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_substr...\n");
+    printf(BOLD GOLD "\nRunning test_substr..." RESET "\n");
 
     // Test cases for substr function comparison
     printf("expected result vs. ft_substr:\n");
@@ -3870,7 +3887,7 @@ void run_test_substr(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_strjoin(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_strjoin...\n");
+    printf(BOLD GOLD "\nRunning test_strjoin..." RESET "\n");
 
     // Test cases for strjoin function comparison
     printf("expected result vs. ft_strjoin:\n");
@@ -3990,7 +4007,7 @@ void run_test_strjoin(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_strtrim(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_strtrim...\n");
+    printf(BOLD GOLD "\nRunning test_strtrim..." RESET "\n");
 
     // Test cases for strtrim function comparison
     printf("expected result vs. ft_strtrim:\n");
@@ -4155,7 +4172,7 @@ void run_test_strtrim(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_split(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_split...\n");
+    printf(BOLD GOLD "\nRunning test_split..." RESET "\n");
 
     // Test cases for split function comparison
     printf("expected result vs. ft_split:\n");
@@ -4568,7 +4585,7 @@ void run_test_split(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_itoa(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_itoa...\n");
+    printf(BOLD GOLD "\nRunning test_itoa..." RESET "\n");
 
     // Test cases for itoa function comparison
     printf("expected value vs. ft_itoa:\n");
@@ -4733,7 +4750,7 @@ void run_test_itoa(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_strmapi(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_strmapi...\n");
+    printf(BOLD GOLD "\nRunning test_strmapi..." RESET "\n");
 
     // Test cases for strmapi function comparison
     printf("expected result vs. ft_strmapi:\n");
@@ -4794,7 +4811,7 @@ void run_test_strmapi(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_striteri(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_striteri...\n");
+    printf(BOLD GOLD "\nRunning test_striteri..." RESET "\n");
 
     // Test cases for striteri function comparison
     printf("expected result vs . ft_striteri:\n");
@@ -4855,7 +4872,7 @@ void run_test_striteri(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_putchar(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_putchar_fd...\n");
+    printf(BOLD GOLD "\nRunning test_putchar_fd..." RESET "\n");
 
     // Test cases for putchar_fd function comparison
     printf("putchar vs. ft_putchar_fd:\n");
@@ -5144,7 +5161,7 @@ void run_test_putchar(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_putstr(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_putstr_fd...\n");
+    printf(BOLD GOLD "\nRunning test_putstr_fd..." RESET "\n");
 
     int saved_stdout = dup(STDOUT_FILENO);
 
@@ -5303,7 +5320,7 @@ void run_test_putstr(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_putendl(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_putendl_fd...\n");
+    printf(BOLD GOLD "\nRunning test_putendl_fd..." RESET "\n");
 
     int saved_stdout = dup(STDOUT_FILENO);
 
@@ -5462,7 +5479,7 @@ void run_test_putendl(bool *grandpass, struct tests (*t)[43], int *i) {
 void run_test_putnbr(bool *grandpass, struct tests (*t)[43], int *i) {
     bool pass = true;
     int test = 0;
-    printf("\nRunning test_putnbr_fd...\n");
+    printf(BOLD GOLD "\nRunning test_putnbr_fd..." RESET "\n");
 
     int saved_stdout = dup(STDOUT_FILENO);
 
@@ -5793,12 +5810,12 @@ void run_test_bonus(bool *grandpass, struct tests (*t)[43], int *i)
     bool pass = true;
     int test = 0;
     int expected_size;
-    printf("\nRunning test_bonus...\n");
+    printf(BOLD GOLD "\nRunning test_bonus..." RESET "\n");
 
     // Test cases for putnbr_fd function comparison
     printf("expected result vs. bonus function result:\n");
 
-    int *np = (int*)malloc(sizeof(int));
+    int *np = (int*)calloc(1, sizeof(int));
     if (np == NULL)
     {
         printf("Error on the side of test code: memory for a value could not be allocated.\n");
@@ -5822,7 +5839,7 @@ void run_test_bonus(bool *grandpass, struct tests (*t)[43], int *i)
         (*t)[34].passed = false;
     t_list *start = node;
 
-    char *str = (char*)malloc(7 * sizeof(char));
+    char *str = (char*)calloc(7, sizeof(char));
     if (str == NULL)
     {
         free(np);
@@ -5863,7 +5880,7 @@ void run_test_bonus(bool *grandpass, struct tests (*t)[43], int *i)
     if (compare_results("ft_lstlast", np, end->content, 1, ++test, &pass, 1, 0) == 0)
         (*t)[38].passed = false;
 
-    double *dp = (double*)malloc(sizeof(double));
+    double *dp = (double*)calloc(1, sizeof(double));
     if (dp == NULL)
     {
         free(np);
@@ -5959,7 +5976,7 @@ void run_test_bonus(bool *grandpass, struct tests (*t)[43], int *i)
     if (compare_results("Counting list size with ft_lstsize", &expected_size, &(int){ ft_lstsize(start) }, 1, ++test, &pass, 1, 0) == 0)
         (*t)[37].passed = false;
 
-    int *np2 = (int*)malloc(sizeof(int));
+    int *np2 = (int*)calloc(1, sizeof(int));
     if (np2 == NULL)
     {
         free(np);
@@ -5999,7 +6016,7 @@ void run_test_bonus(bool *grandpass, struct tests (*t)[43], int *i)
         (*t)[38].passed = false;
     }
 
-    int *np3 = (int*)malloc(sizeof(int));
+    int *np3 = (int*)calloc(1, sizeof(int));
     if (np3 == NULL)
     {
         free(np);
@@ -6044,7 +6061,7 @@ void run_test_bonus(bool *grandpass, struct tests (*t)[43], int *i)
         (*t)[38].passed = false;
     }
 
-    int *np4 = (int*)malloc(sizeof(int));
+    int *np4 = (int*)calloc(1, sizeof(int));
     if (np4 == NULL)
     {
         free(np);
@@ -6117,7 +6134,7 @@ void run_test_bonus(bool *grandpass, struct tests (*t)[43], int *i)
     if (compare_results("Counting list size with ft_lstsize", &expected_size, &(int){ ft_lstsize(start) }, 1, ++test, &pass, 1, 0) == 0)
         (*t)[37].passed = false;
 
-    int *np5 = (int*)malloc(sizeof(int));
+    int *np5 = (int*)calloc(1, sizeof(int));
     if (np5 == NULL)
     {
         free(np);
@@ -6162,7 +6179,7 @@ void run_test_bonus(bool *grandpass, struct tests (*t)[43], int *i)
     printf("Adding node8 to the back of the list with ft_lstadd_back...\n");
     ft_lstadd_back(&start, node8);
 
-    int *np6 = (int*)malloc(sizeof(int));
+    int *np6 = (int*)calloc(1, sizeof(int));
     if (np6 == NULL)
     {
         free(np);

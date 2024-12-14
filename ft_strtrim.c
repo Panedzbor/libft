@@ -6,7 +6,7 @@
 /*   By: earutiun <earutiun@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:48:27 by earutiun          #+#    #+#             */
-/*   Updated: 2024/11/26 14:08:10 by earutiun         ###   ########.fr       */
+/*   Updated: 2024/12/14 18:11:29 by earutiun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_strtrim(const char *s1, const char *set)
 	return (new_str);
 }
 
-size_t	define_start(char *str, const char *set, size_t set_size)
+static size_t	define_start(char *str, const char *set, size_t set_size)
 {
 	size_t	i;
 	size_t	y;
@@ -68,7 +68,7 @@ size_t	define_start(char *str, const char *set, size_t set_size)
 	return ((size_t)(&str[i] - str));
 }
 
-size_t	define_end(char *str, const char *set, size_t set_size)
+static size_t	define_end(char *str, const char *set, size_t set_size)
 {
 	size_t	i;
 	size_t	y;

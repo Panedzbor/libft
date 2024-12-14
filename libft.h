@@ -14,16 +14,11 @@
 # define LIBFT_H
 
 # include <stdio.h>
-# include <ctype.h>
 # include <stddef.h>
 # include <stdlib.h>
-# include <stdint.h>
 # include <stdbool.h>
-# include <string.h>
+# include <stdint.h>
 # include <unistd.h>
-# include <signal.h>
-# include <setjmp.h>
-# include <bsd/string.h>
 
 typedef struct s_list
 {

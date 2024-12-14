@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 static void	convert(char *number, unsigned int nb);
 static void	assign_zero(char *number);
@@ -32,7 +32,7 @@ void	ft_putnbr_fd(int n, int fd)
 	print_out(number, fd);
 }
 
-void	print_out(char *number, int fd)
+static void	print_out(char *number, int fd)
 {
 	int	l;
 
@@ -47,13 +47,13 @@ void	print_out(char *number, int fd)
 	}
 }
 
-void	write_minus(int n, int fd)
+static void	write_minus(int n, int fd)
 {
 	if (n < 0)
 		write(fd, "-", 1);
 }
 
-void	convert(char *number, unsigned int nb)
+static void	convert(char *number, unsigned int nb)
 {
 	int	r;
 	int	i;
@@ -74,7 +74,7 @@ void	convert(char *number, unsigned int nb)
 	}
 }
 
-void	assign_zero(char *number)
+static void	assign_zero(char *number)
 {
 	int	l;
 
